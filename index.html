@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Money Transfer</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS with your public key
+        (function() {
+            emailjs.init("1S4clWTlCERGg9XYC");
+        })();
+
+        // Function to send the email
+        function sendEmail(event) {
+            event.preventDefault(); // Prevent form submission reload
+
+            // Collect form input values
+            const params = {
+                from_name: document.getElementById("name").value,
+                email_id: document.getElementById("email").value,
+                message: document.getElementById("message").value,
+            };
+
+            // Send email using EmailJS
+            emailjs.send("service_uwm9ufm", "template_9bgusld", params)
+                .then(function(response) {
+                    alert("Email sent successfully!");
+                    console.log("SUCCESS:", response);
+                })
+                .catch(function(error) {
+                    alert("Failed to send email. Please try again.");
+                    console.error("ERROR:", error);
+                });
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #0078d4;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #0078d4;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        form label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        form input, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        form button {
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Global Pay Solutions</h1>
+    <p>Your trusted partner in international money transfer.</p>
+</header>
+
+<nav>
+    <a href="#about">About Us</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact Us</a>
+</nav>
+
+<div class="container" id="about">
+    <h2>About Us</h2>
+    <p>We offer secure, fast, and reliable money transfer solutions to help you connect with businesses and loved ones worldwide. Our services are tailored to meet your unique needs, ensuring every transaction is seamless and efficient.</p>
+</div>
+
+<div class="container" id="services">
+    <h2>Our Services</h2>
+    <ul>
+        <li>Business-to-business payments</li>
+        <li>Personal remittances</li>
+        <li>Real-time currency exchange rates</li>
+        <li>24/7 customer support</li>
+    </ul>
+</div>
+
+<div class="container" id="contact">
+    <h2>Contact Us</h2>
+    <form onsubmit="sendEmail(event)">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Write your message here" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+</div>
+
+<footer>
+    <p>&copy; 2024 Global Pay Solutions. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
